@@ -57,10 +57,88 @@ function checkParens(s) {
   return true;
 }
 
-// True, true, true, false
-console.log('asdf + ((4x) + 9) + (3/(8+2))', checkParens('asdf + ((4x) + 9) + (3/(8+2))'));
-console.log('(()()()))())(', checkParens('(()()()))())('));
-console.log('((())))', checkParens('((())))'));
-console.log('(hello)(hello)(hello', checkParens('(hello)(hello)(hello'));
+function sortStack(stack) {
+  if(stack.isEmpty()) {
+    return null;
+  }
+
+  const sorted = new Stack();
+  let n = null;
+  let endLength = stack.length();
+
+  //take top of stack and assign it to variable
+  //iterate through stack checking to see if anything larger than variable
+    //if so -> set variable to larger value
+  //at end of stack pop push to sorted
+  //repeat unti
+
+
+
+
+
+
+
+
+
+  sorted.push(stack.pop());
+  let node = stack.top;
+
+  while(true) {
+    if(stack.top.data >= sorted.top.data) {
+      n = sorted.pop();
+      sorted.push(stack.pop());
+      sorted.push(n);
+      n = null;
+    }
+    while(node.next) {
+      if(node.data >= sorted.peek()) {
+        sorted.push(stack.pop());
+      } else {
+        n = stack.pop();
+      }
+      node = node.next;
+      }
+    }
+    sorted.push(n);
+    n = null;
+    if (sorted.length() === endLength) {
+      return sorted;
+    }
+  }
+
+  while(node.next) {
+    if(node.data > n) {
+      n = node.data;
+    }
+    node = node.next;
+  }
+  sorted.push(n);
+
+  node = stack.top;
+  while(count) {}
+  while(node.next) 
+    if(node.data <= sorted.top.data) {
+      sorted.push(node.data);
+    }
+  }
+  return sorted;
+}
+
+// console.log('asdf + ((4x) + 9) + (3/(8+2))', checkParens('asdf + ((4x) + 9) + (3/(8+2))'));
+// console.log('(()()()))())(', checkParens('(()()()))())('));
+// console.log('((())))', checkParens('((())))'));
+// console.log('(hello)(hello)(hello', checkParens('(hello)(hello)(hello'));
+
+const sortMe = new Stack();
+sortMe.push(3);
+sortMe.push(8);
+sortMe.push(2);
+sortMe.push(4);
+sortMe.push(3);
+sortMe.push(0);
+sortMe.display();
+sortStack(sortMe);
+sortMe.display();
+
 
 //main();

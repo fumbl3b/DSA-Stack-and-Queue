@@ -39,6 +39,20 @@ class Stack {
     return !this.top;
   }
 
+  length() {
+    if(!this.top) {
+      return 0;
+    }
+
+    let currNode = this.top;
+    let length = 1;
+    while(currNode.next) {
+      length ++;
+      currNode = currNode.next;
+    }
+    return length;
+  }
+
   display() {
     if(!this.top) {
       console.log('[ Empty stack ]');
